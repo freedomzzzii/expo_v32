@@ -2,12 +2,12 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import { TabBarIcon } from '../../components';
+import { TabBarIcon } from '../components';
 import {
   HomeScreen,
   LinksScreen,
   SettingsScreen,
-} from '../../screens';
+} from '../screens';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
