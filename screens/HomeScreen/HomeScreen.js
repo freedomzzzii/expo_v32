@@ -9,13 +9,20 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { MonoText } from '../../components';
+import { fetchGetProvince } from '../../actions';
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      header: null,
+    };
+    props.dispatch(fetchGetProvince());
+  }
 
   render() {
     return (
@@ -97,6 +104,18 @@ export default class HomeScreen extends React.Component {
     );
   };
 }
+
+HomeScreen.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => {
+  const { getProvince } = state;
+
+  return { getProvince };
+};
+
+export default connect(mapStateToProps)(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {
