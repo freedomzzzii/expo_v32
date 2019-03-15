@@ -11,9 +11,18 @@ import {
 import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import i18n from 'i18n-js';
 
 import { MonoText } from '../../components';
 import { fetchGetProvince } from '../../actions';
+
+import lang from './LangHomeScreen';
+const { fr, en } = lang;
+
+
+i18n.fallbacks = true;
+i18n.translations = { fr, en };
+i18n.locale = 'en';
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -38,6 +47,10 @@ class HomeScreen extends React.Component {
               style={styles.welcomeImage}
             />
           </View>
+
+          <Text>
+        {i18n.t('foo')} {i18n.t('bar', { someValue: Date.now() })}
+      </Text>
 
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
