@@ -7,7 +7,8 @@
     "eject": "expo eject",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
     "react-devtools": "react-devtools",
-    "dev": "npm-run-all -p react-devtools start"
+    "dev": "REACT_DEBUGGER='rndebugger-open --open --port 19001' npm start",
+    "postinstall": "rndebugger-open"
   },
   "jest": {
     "preset": "jest-expo"
@@ -28,6 +29,8 @@
     "babel-preset-expo": "^5.0.0",
     "jest-expo": "^32.0.0",
     "npm-run-all": "^4.1.5",
+    "react-native-debugger": "^1.1.0",
+    "react-native-debugger-open": "^0.3.18",
     "redux-devtools": "^3.5.0",
     "redux-logger": "^3.0.6"
   },
