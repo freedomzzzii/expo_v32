@@ -42,7 +42,12 @@ class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Tee</Text>
+            <Text style={styles.getStartedText}>
+              It will be run after npm install. (You can run npm run postinstall first) **local
+            </Text>
+            <Text style={styles.getStartedText}>
+              mode dev you can run `npm run dev` (plz open remote debugger [cmd+ctrl+z to open])
+            </Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
