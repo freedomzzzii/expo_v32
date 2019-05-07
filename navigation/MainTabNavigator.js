@@ -7,19 +7,22 @@ import {
   createSwitchNavigator,
 } from 'react-navigation';
 
-import { TabBarIcon } from '../components';
+import content from './LangMainTabNavigator';
+
+import { TabBarIcon, TabBarLabel } from '../components';
 import {
   HomeScreen,
   LinksScreen,
   SettingsScreen,
 } from '../screens';
+import { Colors } from '../config';
 
 const HomeStack = createStackNavigator({
   HomeScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: ({ tintColor }) => <TabBarLabel color={tintColor} index="home" content={content} />,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -37,7 +40,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: ({ tintColor }) => <TabBarLabel color={tintColor} index="links" content={content} />,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -51,7 +54,7 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: ({ tintColor }) => <TabBarLabel color={tintColor} index="settings" content={content} />,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -65,5 +68,21 @@ export default createAppContainer(createSwitchNavigator({
     HomeStack,
     LinksStack,
     SettingsStack,
+  }, {
+    initialRouteName: 'HomeStack',
+    tabBarOptions: {
+      activeTintColor: Colors.tabIconSelected,
+      inactiveTintColor: Colors.tabIconDefault,
+      labelStyle: {
+        fontSize: 9,
+        fontFamily: 'prompt',
+        marginTop: 5,
+      },
+      style: {
+        paddingTop: 5,
+        paddingBottom: 5,
+        height: 55,
+      },
+    },
   }),
 }));
