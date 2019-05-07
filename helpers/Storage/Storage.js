@@ -1,5 +1,14 @@
 import { AsyncStorage } from 'react-native';
 
+const defaultValue = key => {
+  switch (key) {
+    case 'language':
+      return 'en';
+    default:
+      return null;
+  }
+};
+
 const removeItem = async key => {
   try {
     await AsyncStorage.removeItem(key);
@@ -21,7 +30,7 @@ const setItem = async (key, value) => {
 const getItem = async key => {
   try {
     const value = await AsyncStorage.getItem(key);
-    return value;
+    return value ? value : defaultValue(key);
   } catch(exception) {
     return undefined;
   }
