@@ -1,6 +1,11 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createAppContainer,
+  createSwitchNavigator,
+} from 'react-navigation';
 
 import { TabBarIcon } from '../components';
 import {
@@ -10,7 +15,7 @@ import {
 } from '../screens';
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  HomeScreen,
 });
 
 HomeStack.navigationOptions = {
@@ -28,7 +33,7 @@ HomeStack.navigationOptions = {
 };
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+  LinksScreen,
 });
 
 LinksStack.navigationOptions = {
@@ -42,7 +47,7 @@ LinksStack.navigationOptions = {
 };
 
 const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+  SettingsScreen,
 });
 
 SettingsStack.navigationOptions = {
@@ -55,8 +60,10 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
-});
+export default createAppContainer(createSwitchNavigator({
+  Main: createBottomTabNavigator({
+    HomeStack,
+    LinksStack,
+    SettingsStack,
+  }),
+}));

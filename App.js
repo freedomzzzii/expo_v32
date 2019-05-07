@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import styles from './StyleApp';
 
-import AppNavigator from './navigation/AppNavigator';
+import AppNavigator from './navigation/MainTabNavigator';
 
 import configureStore from './configureStore';
 const store = configureStore();
