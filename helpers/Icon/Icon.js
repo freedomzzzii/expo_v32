@@ -2,16 +2,16 @@ import React from 'react';
 import { Icon } from 'expo';
 import PropTypes from 'prop-types';
 
-import { Colors } from '../../config';
-
 export default class TabBarIcon extends React.Component {
   render() {
+    const { name, size, style, color } = this.props;
+
     return (
       <Icon.Ionicons
-        name={this.props.name}
-        size={26}
-        style={{ marginBottom: -3 }}
-        color={this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+        name={name}
+        size={size}
+        style={style}
+        color={ color}
       />
     );
   }
@@ -19,4 +19,7 @@ export default class TabBarIcon extends React.Component {
 
 TabBarIcon.propTypes = {
   name: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
+  style: PropTypes.shape({}),
+  color: PropTypes.string,
 };
