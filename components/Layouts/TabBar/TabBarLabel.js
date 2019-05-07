@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import styles from './StyleTabBar';
 
 import { getItem } from '../../../helpers';
-import { Colors } from '../../../config';
 
 export default class TabBarLabel extends Component {
   constructor(props) {
