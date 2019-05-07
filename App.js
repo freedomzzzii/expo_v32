@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import styles from './StyleApp';
 
@@ -56,3 +57,7 @@ export default class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  skipLoadingScreen: PropTypes.any,
+};
