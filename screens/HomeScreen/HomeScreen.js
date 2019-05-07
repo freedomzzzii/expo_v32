@@ -11,18 +11,9 @@ import {
 import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import i18n from 'i18n-js';
 
 import { MonoText } from '../../components';
 import { fetchGetProvince } from '../../actions';
-
-import lang from './LangHomeScreen';
-const { fr, en } = lang;
-
-
-i18n.fallbacks = true;
-i18n.translations = { fr, en };
-i18n.locale = 'en';
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -32,6 +23,39 @@ class HomeScreen extends React.Component {
     };
     props.dispatch(fetchGetProvince());
   }
+
+  _maybeRenderDevelopmentModeWarning() {
+    if (__DEV__) {
+      const learnMoreButton = (
+        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
+          Learn more
+        </Text>
+      );
+
+      return (
+        <Text style={styles.developmentModeText}>
+          Development mode is enabled, your app will be slower but you can use useful development
+          tools. {learnMoreButton}
+        </Text>
+      );
+    } else {
+      return (
+        <Text style={styles.developmentModeText}>
+          You are not in development mode, your app will run at full speed.
+        </Text>
+      );
+    }
+  }
+
+  _handleLearnMorePress = () => {
+    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
+  };
+
+  _handleHelpPress = () => {
+    WebBrowser.openBrowserAsync(
+      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
+    );
+  };
 
   render() {
     return (
@@ -47,10 +71,6 @@ class HomeScreen extends React.Component {
               style={styles.welcomeImage}
             />
           </View>
-
-          <Text>
-        {i18n.t('foo')} {i18n.t('bar', { someValue: Date.now() })}
-      </Text>
 
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
@@ -88,39 +108,6 @@ class HomeScreen extends React.Component {
       </View>
     );
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 HomeScreen.propTypes = {
