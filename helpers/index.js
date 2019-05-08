@@ -6,6 +6,8 @@ import {
 
 import Icon from './Icon/Icon';
 
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
 export {
   // storage
   getItem,
@@ -13,4 +15,6 @@ export {
   removeItem,
   // icon
   Icon,
+  // ErrorBoundary
+  ErrorBoundary,
 };
