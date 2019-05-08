@@ -7,6 +7,12 @@ import PropTypes from 'prop-types';
 import styles from './StyleApp';
 
 import AppNavigator from './navigation/MainTabNavigator';
+import { ErrorBoundary } from './helpers';
+
+import { SENTRY_DSN } from 'react-native-dotenv';
+import Sentry from 'sentry-expo';
+Sentry.enableInExpoDevelopment = true; // true = enable dev mode
+Sentry.config(SENTRY_DSN).install();
 
 import configureStore from './configureStore';
 const store = configureStore();
@@ -34,12 +40,18 @@ export default class App extends React.Component {
     ])
   );
 
-  _handleLoadingError = error => console.warn(error);
+  _handleLoadingError = error => {
+    console.log('AppLoading>>>', error);
+    Sentry.captureException(new Error(`AppLoading ${new Date().toUTCString()}>>>`, error));
+  }
 
   _handleFinishLoading = () => this.setState({ isLoadingComplete: true });
 
   render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    const { isLoadingComplete } = this.state;
+    const { skipLoadingScreen } = this.props;
+
+    if (!isLoadingComplete && !skipLoadingScreen) {
       return (
         <AppLoading
           startAsync={this._loadResourcesAsync}
@@ -48,12 +60,15 @@ export default class App extends React.Component {
         />
       );
     }
-
+    
     return (
       <Provider store={store}>
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          {/* if you want to log error plz uncomment component ErrorBoundary */}
+          {/* <ErrorBoundary> */}
           <AppNavigator />
+          {/* </ErrorBoundary> */}
         </View>
       </Provider>
     );

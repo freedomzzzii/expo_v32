@@ -24,6 +24,18 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "freedomzzzii",
+            "project": "expo_v32",
+            "authToken": "d962819ca4f9417aa39c736a3673c0bc2eaf6ad6c1684ef0837ebc4216641c2e"
+          }
+        }
+      ]
     }
   }
 }
