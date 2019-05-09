@@ -12,6 +12,8 @@ import DynamicScrollView from './DynamicScrollView/DynamicScrollView';
 
 import FontIcon from './FontIcon/FontIcon';
 
+import Swipers from './Swiper/Swipers';
+
 export {
   // storage
   getItem,
@@ -25,4 +27,6 @@ export {
   DynamicScrollView,
   // fonticon
   FontIcon,
+  // Swipers,
+  Swipers,
 };
