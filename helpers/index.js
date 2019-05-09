@@ -10,6 +10,8 @@ import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 import DynamicScrollView from './DynamicScrollView/DynamicScrollView';
 
+import FontIcon from './FontIcon/FontIcon';
+
 export {
   // storage
   getItem,
@@ -21,4 +23,6 @@ export {
   ErrorBoundary,
   // DynamicScrollView
   DynamicScrollView,
+  // fonticon
+  FontIcon,
 };
