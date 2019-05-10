@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from 'expo';
 import PropTypes from 'prop-types';
+import { Platform } from 'react-native';
 
 export default class TabBarIcon extends React.Component {
   render() {
@@ -8,7 +9,7 @@ export default class TabBarIcon extends React.Component {
 
     return (
       <Icon.Ionicons
-        name={name}
+        name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-${name}`}
         size={size}
         style={style}
         color={ color}
