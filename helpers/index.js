@@ -4,7 +4,7 @@ import {
   removeItem,
 } from './Storage/Storage';
 
-import Icon from './Icon/Icon';
+import Icons from './Icon/Icon';
 
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
@@ -18,13 +18,17 @@ import { Input, InputPassword } from './Input/Input';
 
 import { NormalText, BoldText, Link } from './Text/Text';
 
+import InputCalendar from './InputCalendar/InputCalendar';
+
+import { formatYMD } from './FormatDate/FormatDate';
+
 export {
   // storage
   getItem,
   setItem,
   removeItem,
   // icon
-  Icon,
+  Icons,
   // ErrorBoundary
   ErrorBoundary,
   // DynamicScrollView
@@ -40,4 +44,8 @@ export {
   NormalText,
   BoldText,
   Link,
+  // calendar
+  InputCalendar,
+  // format date
+  formatYMD,
 };
