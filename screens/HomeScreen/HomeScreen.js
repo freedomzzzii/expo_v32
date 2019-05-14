@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
@@ -12,10 +12,18 @@ import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { MonoText } from '../../components';
 import { fetchGetProvince } from '../../actions';
+import {
+  FontIcon,
+  Swipers,
+  Input,
+  InputPassword,
+  InputCalendar,
+} from '../../helpers';
 
-class HomeScreen extends React.Component {
+const dummy = ['/id/334/300/200', '/id/926/200/300?grayscale', '/id/142/200/300?blur=5'];
+
+class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,7 +69,24 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <Swipers img={dummy} />
           <View style={styles.welcomeContainer}>
+            <InputCalendar />
+            <Input
+              label="label"
+              isRequire
+              placeholder="Label"
+            />
+            <InputPassword
+              label="password"
+              isRequire
+              placeholder="Password"
+            />
+            <FontIcon
+              name={'icon-user'}
+              color="red"
+              size={20}
+            />
             <Image
               source={
                 __DEV__
@@ -83,7 +108,7 @@ class HomeScreen extends React.Component {
             </Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+            
             </View>
 
             <Text style={styles.getStartedText}>
@@ -102,7 +127,7 @@ class HomeScreen extends React.Component {
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
           <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+          
           </View>
         </View>
       </View>

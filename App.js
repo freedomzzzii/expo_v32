@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform, StatusBar, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import { Provider } from 'react-redux';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import styles from './StyleApp';
 
 import AppNavigator from './navigation/MainTabNavigator';
-import { ErrorBoundary } from './helpers';
+// import { ErrorBoundary } from './helpers';
 
 import { SENTRY_DSN } from 'react-native-dotenv';
 import Sentry from 'sentry-expo';
@@ -17,7 +17,7 @@ Sentry.config(SENTRY_DSN).install();
 import configureStore from './configureStore';
 const store = configureStore();
 
-export default class App extends React.Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {

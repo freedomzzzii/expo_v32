@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './StyleInput';
 
-import { Icon, NormalText } from '../../helpers';
+import { Icons, NormalText } from '../../helpers';
 import { Colors } from '../../config';
 
 const checkBorder = key => {
@@ -104,7 +104,7 @@ export class InputPassword extends Component {
             {...this.props}
           />
           <TouchableOpacity onPress={this.handleSee}>
-            <Icon style={styles.passwordIcon} name={see ? 'eye' : 'eye-off'} size={15} />
+            <Icons style={styles.passwordIcon} name={see ? 'eye' : 'eye-off'} size={15} />
           </TouchableOpacity>
         </View>
       </View>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Icon } from 'expo';
 import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
 
-export default class TabBarIcon extends React.Component {
+export default class Icons extends Component {
   render() {
     const { name, size, style, color } = this.props;
 
@@ -18,7 +18,7 @@ export default class TabBarIcon extends React.Component {
   }
 }
 
-TabBarIcon.propTypes = {
+Icons.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
   style: PropTypes.shape({}),

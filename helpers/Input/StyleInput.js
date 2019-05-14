@@ -17,6 +17,7 @@ export default StyleSheet.create({
   },
   label: {
     fontSize: 13,
+    color: Colors.textInput,
   },
   inputText: {
     borderWidth: 0.5,

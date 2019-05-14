@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import styles from './StyleTabBar';
 
 import { Colors } from '../../../config';
-import { Icon } from '../../../helpers';
+import { Icons } from '../../../helpers';
 
 export default class TabBarIcon extends Component {
   render() {
     const { focused, name } = this.props;
 
     return (
-      <Icon
+      <Icons
         name={name}
         size={26}
         style={styles.icon}

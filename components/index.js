@@ -6,7 +6,6 @@ import TabBarIcon from './Layouts/TabBar/TabBarIcon';
 import TabBarLabel from './Layouts/TabBar/TabBarLabel';
 
 // component
-import { MonoText } from './Style/StyledText';
 
 export {
   // layout
@@ -14,5 +13,4 @@ export {
   TabBarIcon,
   TabBarLabel,
   // component
-  MonoText,
 };
