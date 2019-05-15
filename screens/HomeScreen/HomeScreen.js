@@ -12,6 +12,8 @@ import { WebBrowser } from 'expo';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import content from './LangHomeScreen';
+
 import { fetchGetProvince } from '../../actions';
 import {
   FontIcon,
@@ -71,7 +73,7 @@ class HomeScreen extends Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <Swipers img={dummy} />
           <View style={styles.welcomeContainer}>
-            <InputCalendar />
+            <InputCalendar content={content} placeholder="placeholder" />
             <Input
               label="label"
               isRequire
