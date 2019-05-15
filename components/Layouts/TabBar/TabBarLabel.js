@@ -19,8 +19,6 @@ export default class TabBarLabel extends Component {
     this.setState({ language });
   }
 
-  han
-
   render() {
     const { language } = this.state;
     const { content, index, color } = this.props;
