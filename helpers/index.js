@@ -20,7 +20,7 @@ import { NormalText, BoldText, Link } from './Text/Text';
 
 import InputCalendar from './InputCalendar/InputCalendar';
 
-import { formatYMD } from './FormatDate/FormatDate';
+import { formatYMD, formatDMY } from './FormatDate/FormatDate';
 
 export {
   // storage
@@ -48,4 +48,5 @@ export {
   InputCalendar,
   // format date
   formatYMD,
+  formatDMY,
 };
