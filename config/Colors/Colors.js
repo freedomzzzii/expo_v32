@@ -10,4 +10,6 @@ export default {
   lightGreen: '#7eaf1e',
   textInput: '#4a4a4a',
   selectCalendar: '#00adf5',
+  bgModalCalendar: 'rgba(52, 52, 52, 0.8)',
+  placeholder: '#d8d8dc',
 };

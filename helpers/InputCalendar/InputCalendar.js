@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Modal } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
+import PropTypes from 'prop-types';
 
 import styles from './StyleInputCalendar';
 
-import { formatYMD, Icons, NormalText } from '../../helpers';
+import {
+  formatYMD,
+  Icons,
+  NormalText,
+  getItem,
+  formatDMY,
+} from '../../helpers';
 import { Colors } from '../../config';
+import { Loading } from '../../components';
 
 LocaleConfig.locales['th'] = {
   monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
@@ -22,12 +30,18 @@ export default class InputCalendar extends Component {
     this.state = {
       select: null,
       show: false,
+      language: null,
     };
+  }
+
+  async UNSAFE_componentWillMount() {
+    const language = await getItem('language');
+    this.setState({ language });
   }
 
   handleShow = () => this.setState({ show: !this.state.show });
 
-  handleSelectDate = date => this.setState({ select: date.timestamp });
+  handleSelectDate = date => this.setState({ select: date.timestamp, show: false });
 
   handleMarkedDates = () => {
     const { select } = this.state;
@@ -54,61 +68,56 @@ export default class InputCalendar extends Component {
   }
 
   render() {
-    const { } = this.props;
-    const { show } = this.state;
-    console.log('>>>', show);
+    const { show, select, language } = this.state;
+    const { content, placeholder } = this.props;
+    
+    if (!language) {
+      return <Loading />;
+    }
+    
     return(
-      <View style={{
-        width: '100%',
-      }}>
+      <View style={styles.box}>
         <View style={styles.inputBox}>
           <TouchableOpacity onPress={this.handleShow} style={styles.textBox}>
-            <NormalText style={styles.text}>eiei</NormalText>
+            {
+              select ?
+                <NormalText style={styles.text}>{formatDMY(select)}</NormalText>
+                : <NormalText style={styles.placeholder}>{content[language][placeholder]}</NormalText>
+            }
             <Icons style={styles.calendarIcon} name="calendar" size={15} />
           </TouchableOpacity>
         </View>
         <Modal
-          // transparent
+          transparent
           visible={show}
         >
-          <View style={{ padding: 50, flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center', }}>
-            <TouchableOpacity
-              onPress={this.handleShow}>
-              <Icons style={styles.calendarIcon} name="close" size={15} />
-            </TouchableOpacity>
-            <Calendar
-              hideArrows={true}
-              minDate={'2019-05-10'}
-              maxDate={'2019-05-30'}
-              onDayPress={day => this.handleSelectDate(day)}
-              markedDates={this.handleMarkedDates()}
-              markingType={'period'}
-            />
+          <View style={styles.modalBox}>
+            <View style={styles.calendarBox}>
+              <TouchableOpacity
+                style={styles.closeBtn}
+                onPress={this.handleShow}>
+                <Icons style={styles.calendarIcon} name="close" size={20} />
+              </TouchableOpacity>
+              <Calendar
+                hideArrows={true}
+                // minDate={'2019-05-10'}
+                // maxDate={'2019-05-30'}
+                onDayPress={day => this.handleSelectDate(day)}
+                markedDates={this.handleMarkedDates()}
+                markingType={'period'}
+              />
+            </View>
           </View>
         </Modal>
       </View>
     );
-    // return(
-    //   // <View style={styles.boxVertical}>
-    //     {/* <ScrollView> */}
-    //       <CalendarList
-    //         current={'2012-03-01'}
-    //         // Callback which gets executed when visible months change in scroll view. Default = undefined
-    //         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
-    //         // Max amount of months allowed to scroll to the past. Default = 50
-    //         pastScrollRange={1}
-    //         // Max amount of months allowed to scroll to the future. Default = 50
-    //         futureScrollRange={1}
-    //         // Enable or disable scrolling of calendar list
-    //         scrollEnabled={true}
-    //         // Enable or disable vertical scroll indicator. Default = false
-    //         showScrollIndicator={true}
-    //         // ...calendarParams
-    //       />
-    //     {/* </ScrollView> */}
-    //   // </View>
-    // );
   }
 }
+
+InputCalendar.propTypes = {
+  content: PropTypes.shape({
+    th: PropTypes.shape({}).isRequired,
+    en: PropTypes.shape({}).isRequired,
+  }).isRequired,
+  placeholder: PropTypes.string.isRequired,
+};
