@@ -21,6 +21,7 @@ import {
   Input,
   InputPassword,
   InputCalendar,
+  Picker,
 } from '../../helpers';
 
 const dummy = ['/id/334/300/200', '/id/926/200/300?grayscale', '/id/142/200/300?blur=5'];
@@ -71,9 +72,14 @@ class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Swipers img={dummy} />
           <View style={styles.welcomeContainer}>
-            <InputCalendar content={content} placeholder="placeholder" />
+            <Picker single content={content} placeholder="placeholderPicker" />
+            <InputCalendar
+              content={content}
+              placeholder="placeholderInputCalendar"
+              isRequire
+              label="Date"
+            />
             <Input
               label="label"
               isRequire
@@ -98,6 +104,7 @@ class HomeScreen extends Component {
               style={styles.welcomeImage}
             />
           </View>
+          <Swipers img={dummy} />
 
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}

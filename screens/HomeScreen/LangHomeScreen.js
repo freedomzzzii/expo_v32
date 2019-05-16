@@ -1,8 +1,10 @@
 export default {
   th: {
-    placeholder: 'เลือกวันที่',
+    placeholderInputCalendar: 'เลือกวันที่',
+    placeholderPicker: 'เลือกวันที่',
   },
   en: {
-    placeholder: 'Select Date',
+    placeholderInputCalendar: 'Select Date',
+    placeholderPicker: 'Select Date',
   },
 };
