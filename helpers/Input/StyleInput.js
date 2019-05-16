@@ -5,6 +5,7 @@ import { Colors } from '../../config';
 export default StyleSheet.create({
   box: {
     width: '100%',
+    marginBottom: 5,
   },
   require: {
     color: Colors.red,
@@ -35,7 +36,7 @@ export default StyleSheet.create({
   boxInputPassword: {
     borderWidth: 0.5,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 5,
     borderRadius: 5,

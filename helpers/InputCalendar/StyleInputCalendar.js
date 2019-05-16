@@ -6,8 +6,18 @@ export default StyleSheet.create({
   box: {
     width: '100%',
   },
-  boxVertical: {
-    maxHeight: 360,
+  require: {
+    color: Colors.red,
+    paddingLeft: 3,
+  },
+  labelBox: {
+    fontSize: 13,
+    marginBottom: 3,
+    flexDirection: 'row',
+  },
+  label: {
+    fontSize: 13,
+    color: Colors.textInput,
   },
   inputBox: {
     borderWidth: 0.5,
@@ -19,16 +29,15 @@ export default StyleSheet.create({
   },
   textBox: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    flex: 1,
   },
   text: {
-    flex: 1,
     fontFamily: 'prompt',
     fontSize: 13,
     color: Colors.textInput,
   },
   placeholder: {
-    flex: 1,
     fontFamily: 'prompt',
     fontSize: 13,
     color: Colors.placeholder,

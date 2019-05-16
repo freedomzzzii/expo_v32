@@ -43,6 +43,15 @@ export default class InputCalendar extends Component {
 
   handleSelectDate = date => this.setState({ select: date.timestamp, show: false });
 
+  handleClearValue = () => {
+    const { show, select } = this.state;
+
+    if (!show && select) {
+      return this.setState({ select: null });
+    }
+    return this.handleShow();
+  }
+
   handleMarkedDates = () => {
     const { select } = this.state;
     if (!select) {
@@ -69,7 +78,7 @@ export default class InputCalendar extends Component {
 
   render() {
     const { show, select, language } = this.state;
-    const { content, placeholder } = this.props;
+    const { content, placeholder, label, isRequire } = this.props;
     
     if (!language) {
       return <Loading />;
@@ -77,15 +86,27 @@ export default class InputCalendar extends Component {
     
     return(
       <View style={styles.box}>
+        {
+          label ?
+            <View style={styles.labelBox}>
+              <NormalText style={styles.label}>{label}</NormalText>
+              {isRequire ? <NormalText style={styles.require}>*</NormalText> : null}
+            </View>
+            : null
+        }
         <View style={styles.inputBox}>
-          <TouchableOpacity onPress={this.handleShow} style={styles.textBox}>
-            {
-              select ?
-                <NormalText style={styles.text}>{formatDMY(select)}</NormalText>
-                : <NormalText style={styles.placeholder}>{content[language][placeholder]}</NormalText>
-            }
-            <Icons style={styles.calendarIcon} name="calendar" size={15} />
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TouchableOpacity onPress={this.handleShow} style={styles.textBox}>
+              {
+                select ?
+                  <NormalText style={styles.text}>{formatDMY(select)}</NormalText>
+                  : <NormalText style={styles.placeholder}>{content[language][placeholder]}</NormalText>
+              }
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this.handleClearValue}>
+              <Icons style={styles.calendarIcon} name={!show && select ? 'close' : 'calendar'} size={15} />
+            </TouchableOpacity>
+          </View>
         </View>
         <Modal
           transparent
@@ -120,4 +141,6 @@ InputCalendar.propTypes = {
     en: PropTypes.shape({}).isRequired,
   }).isRequired,
   placeholder: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  isRequire: PropTypes.bool,
 };
