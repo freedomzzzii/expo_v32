@@ -95,7 +95,7 @@ export default class InputCalendar extends Component {
             : null
         }
         <View style={styles.inputBox}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <View style={styles.input}>
             <TouchableOpacity onPress={this.handleShow} style={styles.textBox}>
               {
                 select ?

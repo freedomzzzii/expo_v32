@@ -28,6 +28,10 @@ export default StyleSheet.create({
     height: 31,
     padding: 5,
   },
+  input: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   textBox: {
     flexDirection: 'row',
     alignItems: 'center',
