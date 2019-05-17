@@ -28,6 +28,10 @@ export default StyleSheet.create({
     height: 31,
     padding: 5,
   },
+  input: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   textBox: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -46,5 +50,28 @@ export default StyleSheet.create({
   icon: {
     color: Colors.textInput,
     marginLeft: 5,
+  },
+  modalBox: {
+    padding: 25,
+    // flex: 1,
+    justifyContent: 'center',
+    backgroundColor: Colors.bgModalCalendar,
+  },
+  pickerBox: {
+    backgroundColor: Colors.white,
+    padding: 25,
+    borderRadius: 10,
+    maxHeight: '50%',
+    // height: '100%',
+    // flex: 1,
+  },
+  closeBtn: {
+    width: 'auto',
+    // width: '100%',
+    alignItems: 'flex-end',
+    marginBottom: 5,
+    // justifyContent: 'flex-end',
+    // alignContent: 'flex-end',
+    // alignSelf: 'flex-sta',
   },
 });

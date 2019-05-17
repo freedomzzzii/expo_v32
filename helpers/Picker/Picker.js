@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Modal } from 'react-native';
+import { View, TouchableOpacity, Modal, ScrollView, Text } from 'react-native';
 
 import styles from './StylePicker';
 
-import { Icons, NormalText, getItem } from '../../helpers';
+import { Icons, NormalText, getItem, DynamicScrollView, Input } from '../../helpers';
 import { Loading } from '../../components';
 
 const items = [{
@@ -63,13 +63,14 @@ export default class Picker extends Component {
   render() {
     const { select, language, show } = this.state;
     const { single, content, placeholder, label, isRequire } = this.props;
-    console.log('>>>',single && this.multiSelect);
-
+    
     if (!language) {
       return <Loading />;
     }
     return (
-      <View style={styles.box}>
+      <View style={{}}>
+
+      <View style={{width: '100%', height: 50}}>
         {
           label ?
             <View style={styles.labelBox}>
@@ -78,8 +79,8 @@ export default class Picker extends Component {
             </View>
             : null
         }
-        <View style={styles.inputBox}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={{ ...styles.inputBox, ...styles.box, flex: 1 }}>
+          <View style={styles.input}>
             <TouchableOpacity onPress={this.handleShow} style={styles.textBox}>
               {
                 select.length === 0 ?
@@ -92,28 +93,56 @@ export default class Picker extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        <Modal
+        {/* <Modal
           transparent
           visible={show}
         >
           <View style={styles.modalBox}>
-            <View style={styles.calendarBox}>
-              <TouchableOpacity
-                style={styles.closeBtn}
-                onPress={this.handleShow}>
-                <Icons style={styles.calendarIcon} name="close" size={20} />
-              </TouchableOpacity>
-              {/* <Calendar
-                hideArrows={true}
-                // minDate={'2019-05-10'}
-                // maxDate={'2019-05-30'}
-                onDayPress={day => this.handleSelectDate(day)}
-                markedDates={this.handleMarkedDates()}
-                markingType={'period'}
-              /> */}
+            <View style={styles.pickerBox}>
+              <View>
+                <TouchableOpacity
+                  style={styles.closeBtn}
+                  onPress={this.handleShow}
+                >
+                  <Icons style={styles.icon} name="close" size={20} />
+                </TouchableOpacity>
+              </View>
+              <Input placeholder="Search..." />
+              <View style={{ marginBottom: 5  }}>
+                <DynamicScrollView>
+                  <NormalText style={{fontSize: 50}}>Scroll me plz</NormalText>
+                </DynamicScrollView>
+              </View>
             </View>
           </View>
+        </Modal> */}
+      </View>
+
+      <Modal
+          transparent
+          visible={true}
+          
+        >
+          <View style={{ padding: 25,backgroundColor: 'rgba(52, 52, 52, 0.8)', height: '100%', alignItems: 'center', justifyContent: 'center'}}>
+            {/* <View style={styles.pickerBox}> */}
+              <View style={{backgroundColor: 'white', alignItems: 'center', width: '100%'}}>
+                <TouchableOpacity
+                  style={{ margin: 50 }}
+                  onPress={this.handleShow}
+                >
+                  <Icons style={styles.icon} name="close" size={20} />
+                </TouchableOpacity>
+              </View>
+              {/* <Input placeholder="Search..." />
+              <View style={{ marginBottom: 5  }}>
+                <DynamicScrollView>
+                  <NormalText style={{fontSize: 50}}>Scroll me plz</NormalText>
+                </DynamicScrollView>
+              </View> */}
+            {/* </View> */}
+          </View>
         </Modal>
+
       </View>
     );
   }

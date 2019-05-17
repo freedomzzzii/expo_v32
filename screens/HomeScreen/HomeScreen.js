@@ -71,30 +71,18 @@ class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <Picker single content={content} placeholder="placeholderPicker" />
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
-            <Picker single content={content} placeholder="placeholderPicker" />
             <InputCalendar
               content={content}
               placeholder="placeholderInputCalendar"
               isRequire
               label="Date"
             />
-            <Input
-              label="label"
-              isRequire
-              placeholder="Label"
-            />
-            <InputPassword
-              label="password"
-              isRequire
-              placeholder="Password"
-            />
-            <FontIcon
-              name={'icon-user'}
-              color="red"
-              size={20}
-            />
+            <Input label="label" isRequire placeholder="Label" />
+            <InputPassword label="password" isRequire placeholder="Password" />
+            <FontIcon name={'icon-user'} color="red" size={20} />
             <Image
               source={
                 __DEV__
