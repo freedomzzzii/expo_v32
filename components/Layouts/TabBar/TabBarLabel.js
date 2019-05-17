@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './StyleTabBar';
 
-import { getItem } from '../../../helpers';
+import { getItem, NormalText } from '../../../helpers';
 
 export default class TabBarLabel extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export default class TabBarLabel extends Component {
       return null;
     }
     return(
-      <Text style={{ ...styles.label, color }}>{content[language][index]}</Text>
+      <NormalText style={{ ...styles.label, color }}>{content[language][index]}</NormalText>
     );
   }
 }
