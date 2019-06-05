@@ -26,6 +26,8 @@ import Picker from './Picker/Picker';
 
 import { PrimaryButton, SecondaryButton, CustomButton } from './Button/Button';
 
+import NavbarBack from './NavbarBack/NavbarBack';
+
 export {
   // storage
   getItem,
@@ -59,4 +61,6 @@ export {
   PrimaryButton,
   SecondaryButton,
   CustomButton,
+  // navbar back
+  NavbarBack,
 };

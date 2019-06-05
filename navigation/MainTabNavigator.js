@@ -18,6 +18,10 @@ import { Colors } from '../config';
 
 const HomeStack = createStackNavigator({
   HomeScreen,
+}, {
+  initialRouteName: 'HomeScreen',
+  header: null,
+  headerMode: 'none',
 });
 
 HomeStack.navigationOptions = {

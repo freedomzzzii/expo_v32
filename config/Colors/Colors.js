@@ -8,6 +8,8 @@ export default {
   borderInput: '#777777',
   red: '#ef3939',
   lightGreen: '#7eaf1e',
+  // navbar back
+  bgNavbarBack: '#00adf5',
   // input
   textInput: '#4a4a4a',
   placeholder: '#d8d8dc',

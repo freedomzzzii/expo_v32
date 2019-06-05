@@ -25,6 +25,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   CustomButton,
+  NavbarBack,
 } from '../../helpers';
 
 const dummy = ['/id/334/300/200', '/id/926/200/300?grayscale', '/id/142/200/300?blur=5'];
@@ -74,6 +75,11 @@ class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <NavbarBack
+          isShowBackBtn
+          isShowBackground
+          title="Title"
+        />
         <Picker label="select box" single content={content} placeholder="placeholderPicker" />
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
@@ -85,13 +91,13 @@ class HomeScreen extends Component {
             />
             <Input label="label" isRequire placeholder="Label" />
             <InputPassword label="password" isRequire placeholder="Password" />
-            <PrimaryButton shape>
+            <PrimaryButton shape onPress={() => this.props.navigation.navigate('SettingsStack')}>
               PrimaryButton
             </PrimaryButton>
             <SecondaryButton shape>
               SecondaryButton
             </SecondaryButton>
-            <CustomButton shape btnStyle={{backgroundColor: '#ffb6c1', }} textStyle={{ color: '#4a4a4a'}}>
+            <CustomButton shape btnStyle={{ backgroundColor: '#ffb6c1' }} textStyle={{ color: '#4a4a4a' }}>
               CustomButton
             </CustomButton>
             <FontIcon name={'icon-user'} color="red" size={20} />
@@ -146,6 +152,9 @@ class HomeScreen extends Component {
 
 HomeScreen.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => {
@@ -160,6 +169,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    padding: 30,
   },
   developmentModeText: {
     marginBottom: 20,
