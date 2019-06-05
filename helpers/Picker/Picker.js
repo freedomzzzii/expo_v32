@@ -68,9 +68,7 @@ export default class Picker extends Component {
       return <Loading />;
     }
     return (
-      <View style={{}}>
-
-      <View style={{width: '100%', height: 50}}>
+      <View style={styles.box}>
         {
           label ?
             <View style={styles.labelBox}>
@@ -79,61 +77,66 @@ export default class Picker extends Component {
             </View>
             : null
         }
-        <View style={{ ...styles.inputBox, ...styles.box, flex: 1 }}>
+        <View style={styles.inputBox}>
           <View style={styles.input}>
             <TouchableOpacity onPress={this.handleShow} style={styles.textBox}>
               {
-                select.length === 0 ?
-                  <NormalText style={styles.text}>eiei</NormalText>
-                  : <NormalText style={styles.placeholder}>{content[language][placeholder]}</NormalText>
+                select.length > 0 ?
+                  <NormalText style={styles.text}>value</NormalText>
+                  : <NormalText style={styles.placeholder}>placeholder</NormalText>
               }
             </TouchableOpacity>
             <TouchableOpacity onPress={this.handleClearValue}>
-              <Icons fontAwesome style={styles.icon} name={!show && select.length > 0 ? 'close' : 'angle-down'} size={15} />
+              <Icons style={styles.calendarIcon} name={!show && select.length > 0 ? 'close' : 'calendar'} size={15} />
             </TouchableOpacity>
           </View>
         </View>
-        {/* <Modal
+
+        <Modal
           transparent
           visible={show}
-        >
-          <View style={styles.modalBox}>
-            <View style={styles.pickerBox}>
-              <View>
-                <TouchableOpacity
-                  style={styles.closeBtn}
-                  onPress={this.handleShow}
-                >
-                  <Icons style={styles.icon} name="close" size={20} />
-                </TouchableOpacity>
-              </View>
-              <Input placeholder="Search..." />
-              <View style={{ marginBottom: 5  }}>
-                <DynamicScrollView>
-                  <NormalText style={{fontSize: 50}}>Scroll me plz</NormalText>
-                </DynamicScrollView>
-              </View>
-            </View>
-          </View>
-        </Modal> */}
-      </View>
-
-      <Modal
-          transparent
-          visible={true}
           
         >
           <View style={{ padding: 25,backgroundColor: 'rgba(52, 52, 52, 0.8)', height: '100%', alignItems: 'center', justifyContent: 'center'}}>
             {/* <View style={styles.pickerBox}> */}
-              <View style={{backgroundColor: 'white', alignItems: 'center', width: '100%'}}>
-                <TouchableOpacity
-                  style={{ margin: 50 }}
-                  onPress={this.handleShow}
-                >
-                  <Icons style={styles.icon} name="close" size={20} />
-                </TouchableOpacity>
+            <View style={{backgroundColor: 'white', width: '100%', borderRadius: 10, padding: 25 }}>
+              <TouchableOpacity
+                style={{ alignItems: 'flex-end', marginBottom: 5 }}
+                onPress={this.handleShow}
+              >
+                <Icons style={styles.icon} name="close" size={20} />
+              </TouchableOpacity>
+              <View style={{
+                borderWidth: 0.5,
+                borderColor: 'rgba(52, 52, 52, 0.8)',
+                borderRadius: 5,
+                width: '100%',
+                height: 31,
+                padding: 5,
+              }}>
+                {
+                  select.length > 0 ?
+                    <NormalText style={styles.text}>value</NormalText>
+                    : <NormalText style={styles.placeholder}>placeholder</NormalText>
+                }
               </View>
-              {/* <Input placeholder="Search..." />
+              <View style={{
+                borderWidth: 0.5,
+                borderColor: 'rgba(52, 52, 52, 0.8)',
+                borderRadius: 5,
+                width: '100%',
+                height: 100,
+                padding: 5,
+                marginTop: 5
+              }}>
+                <ScrollView>
+                  <Text>
+                    eiei
+                  </Text>
+                </ScrollView>
+              </View>
+            </View>
+            {/* <Input placeholder="Search..." />
               <View style={{ marginBottom: 5  }}>
                 <DynamicScrollView>
                   <NormalText style={{fontSize: 50}}>Scroll me plz</NormalText>

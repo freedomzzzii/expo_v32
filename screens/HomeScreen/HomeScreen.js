@@ -71,7 +71,7 @@ class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Picker single content={content} placeholder="placeholderPicker" />
+        <Picker label="select box" single content={content} placeholder="placeholderPicker" />
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <InputCalendar
