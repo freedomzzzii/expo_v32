@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StatusBar, View } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
+import { AppLoading, Asset, Font, Icon, ScreenOrientation } from 'expo';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -23,6 +23,10 @@ export default class App extends Component {
     this.state = {
       isLoadingComplete: false,
     };
+  }
+
+  async UNSAFE_componentWillMount() {
+    ScreenOrientation.allowAsync('PORTRAIT_UP');
   }
 
   _loadResourcesAsync = async () => (
