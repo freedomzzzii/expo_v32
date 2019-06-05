@@ -22,6 +22,9 @@ import {
   InputPassword,
   InputCalendar,
   Picker,
+  PrimaryButton,
+  SecondaryButton,
+  CustomButton,
 } from '../../helpers';
 
 const dummy = ['/id/334/300/200', '/id/926/200/300?grayscale', '/id/142/200/300?blur=5'];
@@ -82,6 +85,15 @@ class HomeScreen extends Component {
             />
             <Input label="label" isRequire placeholder="Label" />
             <InputPassword label="password" isRequire placeholder="Password" />
+            <PrimaryButton shape>
+              PrimaryButton
+            </PrimaryButton>
+            <SecondaryButton shape>
+              SecondaryButton
+            </SecondaryButton>
+            <CustomButton shape btnStyle={{backgroundColor: '#ffb6c1', }} textStyle={{ color: '#4a4a4a'}}>
+              CustomButton
+            </CustomButton>
             <FontIcon name={'icon-user'} color="red" size={20} />
             <Image
               source={

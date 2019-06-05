@@ -8,8 +8,13 @@ export default {
   borderInput: '#777777',
   red: '#ef3939',
   lightGreen: '#7eaf1e',
+  // input
   textInput: '#4a4a4a',
+  placeholder: '#d8d8dc',
+  // calendar
   selectCalendar: '#00adf5',
   bgModalCalendar: 'rgba(52, 52, 52, 0.8)',
-  placeholder: '#d8d8dc',
+  // button
+  btnPrimary: '#ff9600',
+  btnSecondary: '#1c5ab9',
 };
