@@ -49,6 +49,7 @@ export class Input extends Component {
             : null
         }
         <TextInput
+          allowFontScaling={false}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
           {...this.props}
@@ -96,6 +97,7 @@ export class InputPassword extends Component {
         }
         <View style={{ ...styles.boxInputPassword, borderBottomColor: checkBorder(inputState) }}>
           <TextInput
+            allowFontScaling={false}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             textContentType="none"

@@ -6,7 +6,7 @@ import styles from './StyleText';
 
 export class BoldText extends Component {
   render() {
-    return <Text {...this.props} style={{ ...this.props.style, ...styles.boldText }} />;
+    return <Text allowFontScaling={false} {...this.props} style={{ ...this.props.style, ...styles.boldText }} />;
   }
 }
 
@@ -16,7 +16,7 @@ BoldText.propTypes = {
 
 export class NormalText extends Component {
   render() {
-    return <Text {...this.props} style={{ ...this.props.style, ...styles.plainText }} />;
+    return <Text allowFontScaling={false} {...this.props} style={{ ...this.props.style, ...styles.plainText }} />;
   }
 }
 
@@ -28,7 +28,7 @@ export class Link extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <Text {...this.props} style={{ ...this.props.style, ...styles.linkText }} />
+        <Text allowFontScaling={false} {...this.props} style={{ ...this.props.style, ...styles.linkText }} />
       </TouchableOpacity>
     );
   }
