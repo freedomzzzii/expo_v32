@@ -28,6 +28,8 @@ import { PrimaryButton, SecondaryButton, CustomButton } from './Button/Button';
 
 import NavbarBack from './NavbarBack/NavbarBack';
 
+import SafeView from './SafeView/SafeView';
+
 export {
   // storage
   getItem,
@@ -63,4 +65,6 @@ export {
   CustomButton,
   // navbar back
   NavbarBack,
+  // safeview
+  SafeView,
 };
